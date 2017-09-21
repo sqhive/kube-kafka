@@ -9,7 +9,7 @@ metadata:
     service: kafka
     broker_id: "2"
 spec:
-  clusterIP: 10.91.254.50
+  clusterIP: 10.91.254.60
   type: ClusterIP
   ports:
     - name: broker
