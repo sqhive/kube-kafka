@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: kafka
-          image: quay.io/ukhomeofficedigital/kafka:v0.0.1
+          image: gcr.io/sqhive-backend/kafka:latest
           imagePullPolicy: Always
           resources:
             limits:
