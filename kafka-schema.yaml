@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kafka-schema
+  namespace: kafka
+  labels:
+    name: kafka-schema
+spec:
+  replicas: 1
+  selector:
+    name: kafka-schema
+  template:
+    metadata:
+      labels:
+        name: kafka-schema
+    spec:
+      containers:
+        - name: kafka-schema
+          image: confluentinc/cp-schema-registry:3.3.0
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "250Mi"
+          env:
+            - name: SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL
+              value: "zookeer-1.zookeeper:2181"
+            - name: SCHEMA_REGISTRY_HOST_NAME
+              value: "kafka-schema.kafka"
+          ports:
+            - containerPort: 8081
