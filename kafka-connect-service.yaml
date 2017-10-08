@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-connect
+  namespace: kafka
+spec:
+  type: ClusterIP
+  clusterIP: 10.91.254.7
+  ports:
+    - name: schema
+      targetPort: 8083
+      port: 80
+  selector:
+    name: kafka-connect
