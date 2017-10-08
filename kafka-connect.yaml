@@ -48,3 +48,10 @@ spec:
               value: "org.apache.kafka.connect.json.JsonConverter"
           ports:
             - containerPort: 8083
+          volumeMounts:
+            - name: nfs
+              mountPath: "/etc/kafka-connect/jars"
+      volumes:
+        - name: nfs
+          persistentVolumeClaim:
+            claimName: nfs-kafka-connect
