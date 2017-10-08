@@ -54,4 +54,4 @@ spec:
       volumes:
         - name: nfs
           persistentVolumeClaim:
-            claimName: nfs-kafka-connect
+            claimName: nfs-kafka-connect-jars
