@@ -20,7 +20,7 @@ spec:
           imagePullPolicy: Always
           resources:
             limits:
-              memory: "250Mi"
+              memory: "750Mi"
           env:
             - name: CONNECT_REST_ADVERTISED_HOST_NAME
               value: "kafka-connect.kafka"
