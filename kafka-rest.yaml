@@ -23,9 +23,7 @@ spec:
               memory: "250Mi"
           env:
             - name: KAFKA_REST_HOST_NAME
-              value: "kafka-rest.kafka"
-            - name: KAFKA_REST_LISTENERS
-              value: "http://kafka-rest.kafka"
+              value: "kafka-api.kafka"
             - name: KAFKA_REST_ZOOKEEPER_CONNECT
               value: "zookeeper-1.zookeeper:2181,zookeeper-2.zookeeper:2181,zookeeper-3.zookeeper:2181"
             - name: KAFKA_REST_SCHEMA_REGISTRY_URL
