@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kafka-schema
+  namespace: kafka
+  labels:
+    name: kafka-schema
+spec:
+  replicas: 1
+  selector:
+    name: kafka-schema
+  template:
+    metadata:
+      labels:
+        name: kafka-schema
+    spec:
+      containers:
+        - name: kafka-schema
+          image: confluentinc/cp-kafka-connect:3.3.0
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "250Mi"
+          env:
+            - name: CONNECT_REST_ADVERTISED_HOST_NAME
+              value: "kafka-connect.kafka"
+            - name: CONNECT_BOOTSTRAP_SERVERS
+              value: "kafka-1.kafka:9092,kafka-2.kafka:9092,kafka-3.kafka:9092"
+            - name: CONNECT_GROUP_ID
+              value: "connect-avro-config"
+            - name: CONNECT_CONFIG_STORAGE_TOPIC
+              value: "connect-avro-config"
+            - name: CONNECT_OFFSET_STORAGE_TOPIC
+              value: "connect-avro-offsets"
+            - name: CONNECT_STATUS_STORAGE_TOPIC
+              value: "connect-avro-status"
+            - name: CONNECT_KEY_CONVERTER
+              value: "io.confluent.connect.avro.AvroConverter"
+            - name: CONNECT_VALUE_CONVERTER
+              value: "io.confluent.connect.avro.AvroConverter"
+            - name: CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
+              value: "http://kafka-schema.kafka"
+            - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+              value: "http://kafka-schema.kafka"
+            - name: CONNECT_INTERNAL_KEY_CONVERTER
+              value: "org.apache.kafka.connect.json.JsonConverter"
+            - name: CONNECT_INTERNAL_VALUE_CONVERTER
+              value: "org.apache.kafka.connect.json.JsonConverter"
+          ports:
+            - containerPort: 8083
