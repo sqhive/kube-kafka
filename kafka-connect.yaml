@@ -49,9 +49,15 @@ spec:
           ports:
             - containerPort: 8083
           volumeMounts:
-            - name: nfs
+            - name: nfs-jars
               mountPath: "/etc/kafka-connect/jars"
+          volumeMounts:
+            - name: nfs-data
+              mountPath: "/data"
       volumes:
-        - name: nfs
+        - name: nfs-jars
           persistentVolumeClaim:
             claimName: nfs-kafka-connect-jars
+        - name: nfs-data
+          persistentVolumeClaim:
+            claimName: nfs-kafka-connect-data
