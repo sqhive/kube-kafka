@@ -51,7 +51,6 @@ spec:
           volumeMounts:
             - name: nfs-jars
               mountPath: "/etc/kafka-connect/jars"
-          volumeMounts:
             - name: nfs-data
               mountPath: "/data"
       volumes:
