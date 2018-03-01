@@ -41,7 +41,8 @@ spec:
             - containerPort: 9092
           volumeMounts:
             - mountPath: /data
-              name: data
+              name: nfs-kafka-data
       volumes:
-        - emptyDir: {}
-          name: data
+        - name: nfs-kafka-data
+          persistentVolumeClaim:
+            claimName: nfs-kafka-2-data
