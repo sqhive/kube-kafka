@@ -34,7 +34,7 @@ spec:
             - name: NUM_PARTITIONS
               value: "3"
             - name: ADVERTISED_HOSTNAME
-              value: "kafka-3"
+              value: "kafka-3.kafka"
             - name: ZOOKEEPER_CONNECT
               value: "zookeeper-1.zookeeper:2181,zookeeper-2.zookeeper:2181,zookeeper-3.zookeeper:2181"
           ports:
