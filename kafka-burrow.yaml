@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kafka-burrow
+  namespace: kafka
+  labels:
+    name: kafka-burrow
+spec:
+  replicas: 1
+  selector:
+    name: kafka-burrow
+  template:
+    metadata:
+      labels:
+        name: kafka-burrow
+    spec:
+      containers:
+        - name: burrow
+          image: gcr.io/sqhive-backend/kafka-burrow
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "250Mi"
+          ports:
+            - containerPort: 8000
