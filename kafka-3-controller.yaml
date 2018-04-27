@@ -19,6 +19,10 @@ spec:
         broker_id: "3"
         service: kafka
     spec:
+      initContainers:
+        - name: init-zookeeper
+          image: busybox
+          command: ['sh', '-c', 'until nslookup zookeeper-3.zookeeper; do echo waiting for Zookeeper; sleep 5; done;']
       containers:
         - name: kafka
           image: gcr.io/sqhive-backend/kafka:latest

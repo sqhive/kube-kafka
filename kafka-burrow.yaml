@@ -14,6 +14,10 @@ spec:
       labels:
         name: kafka-burrow
     spec:
+      initContainers:
+        - name: init-zookeeper
+          image: busybox
+          command: ['sh', '-c', 'until nslookup zookeeper-1.zookeeper; do echo waiting for Zookeeper; sleep 5; done;']
       containers:
         - name: burrow
           image: gcr.io/sqhive-backend/kafka-burrow

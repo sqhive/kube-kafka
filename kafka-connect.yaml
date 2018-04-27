@@ -14,6 +14,10 @@ spec:
       labels:
         name: kafka-connect
     spec:
+      initContainers:
+        - name: init-kafka
+          image: busybox
+          command: ['sh', '-c', 'until (nslookup kafka-1 || nslookup kafka-2 || nslookup kafka-3); do echo waiting for Zookeeper; sleep 5; done;']
       containers:
         - name: kafka-connect
           image: confluentinc/cp-kafka-connect:3.3.0

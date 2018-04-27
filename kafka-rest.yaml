@@ -14,6 +14,10 @@ spec:
       labels:
         name: kafka-rest
     spec:
+      initContainers:
+        - name: init-zookeeper
+          image: busybox
+          command: ['sh', '-c', 'until nslookup zookeeper-1.zookeeper; do echo waiting for Zookeeper; sleep 5; done;']
       containers:
         - name: kafka-rest
           image: confluentinc/cp-kafka-rest:3.3.0
