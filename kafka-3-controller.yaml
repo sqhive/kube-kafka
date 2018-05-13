@@ -19,6 +19,8 @@ spec:
         broker_id: "3"
         service: kafka
     spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: preemptible-pool
       initContainers:
         - name: init-zookeeper
           image: busybox
