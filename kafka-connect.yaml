@@ -14,6 +14,8 @@ spec:
       labels:
         name: kafka-connect
     spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: standard-pool
       initContainers:
         - name: init-kafka
           image: busybox

@@ -14,6 +14,8 @@ spec:
       labels:
         name: kafka-rest
     spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: standard-pool
       initContainers:
         - name: init-zookeeper
           image: busybox
