@@ -20,7 +20,7 @@ spec:
         service: kafka
     spec:
       nodeSelector:
-        cloud.google.com/gke-nodepool: preemptible-pool
+        cloud.google.com/gke-nodepool: standard-pool
       initContainers:
         - name: init-zookeeper
           image: busybox
